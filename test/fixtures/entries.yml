@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_taken: 1
+  user: MyString
+  description: MyText
+  status: MyString
+  case: 1
+  team: MyString
+
+two:
+  time_taken: 1
+  user: MyString
+  description: MyText
+  status: MyString
+  case: 1
+  team: MyString
