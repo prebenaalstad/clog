@@ -8,9 +8,18 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lux/bulmaswatch.min.css">
+
   </head>
 
   <body>
-    <%= yield %>
+  <div class="container">
+    <% if notice %>
+      <%= render 'partials/alerts' %>
+    <% end %>
+  </div>
+  <%= render 'partials/header' %>
+     
+  <%= yield %>
   </body>
 </html>

@@ -1,6 +1,17 @@
-<h1>Editing Entry</h1>
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <h1>Editing Entry</h1>
+    </div>
+  </div>
+</div>
 
 <%= render 'form', entry: @entry %>
-
-<%= link_to 'Show', @entry %> |
-<%= link_to 'Back', entries_path %>
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <%= link_to 'Show', @entry , class: "button is-link is-outlined"%>
+      <%= link_to 'Back', entries_path, class: "button is-link is-outlined" %>
+    </div>
+  </div>
+</div>

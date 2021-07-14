@@ -1,0 +1,50 @@
+
+<h1 class="ml-6 mt-6 title is-2">Search Results</h1>
+
+<table class="table ml-6 mr-6 is-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>User</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Case</th>
+    <th>Team</th>
+    <th>Time taken</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result.id %></td>
+      <td><%= result.user_id %></td>
+      <td><%= result.description %></td>
+      <td><%= result.status %></td>
+      <td><%= result.case %></td>
+      <td><%= result.team %></td>
+      <td><%= result.time_taken %></td>
+
+      <td><%= link_to entry_path(result), :title => "View this entry" do %>
+          <%= fa_icon('eye', type: :solid, style: 'color: Purple') %>
+        <% end  %>
+      </td>
+
+      <td><%= link_to edit_entry_path(result), :title => "Edit this entry" do %>
+          <%= fa_icon('edit', style: 'color: Purple') %>
+        <% end %>
+      </td>
+
+      <td><%= link_to entry_path(result), method: :delete, data: { confirm: 'Are you sure?' },
+                      :title => "Delete this entry" do %>
+          <%= fa_icon('trash-alt', style: 'color: Purple') %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+
+  </tfoot>
+
+</table>

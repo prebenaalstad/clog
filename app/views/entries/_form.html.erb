@@ -1,47 +1,57 @@
-<%= form_with(model: entry) do |form| %>
-  <% if entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <%= form_with(model: entry) do |form| %>
+        <% if entry.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
 
-      <ul>
-        <% entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% entry.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="field">
+          <%= form.label :time_taken %>
+          <%= form.number_field :time_taken %>
+        </div>
+
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_field :description %>
+        </div>
+
+
+
+
+
+        <div class="field">
+          <%= form.label :case_number %>
+          <%= form.number_field :case %>
+        </div>
+
+        <div class="field">
+          <%= form.label :team %>
+          <%= form.text_field :team %>
+        </div>
+        <div class="field">
+          <%= form.number_field :user_id, id: :entry_user_id, class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
+
+        <div class="field">
+          <%= form.label :status %>
+          <%= form.select :status, options_for_select(["Completed", "Ongoing", "On-hold"]) %>
+        </div>
+
+        <br>
+
+        <div class="actions">
+          <%= form.submit class: "button is-outlined is-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :time_taken %>
-    <%= form.number_field :time_taken %>
   </div>
-
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.text_field :user %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :case %>
-    <%= form.number_field :case %>
-  </div>
-
-  <div class="field">
-    <%= form.label :team %>
-    <%= form.text_field :team %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

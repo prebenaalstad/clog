@@ -1,34 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
 
-<p>
-  <strong>Time taken:</strong>
-  <%= @entry.time_taken %>
-</p>
+      <p>
+        <strong>Time taken:</strong>
+        <%= @entry.time_taken %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @entry.user %>
-</p>
+      <p>
+        <strong>User:</strong>
+        <% User.where(id: @entry.user_id).each do |user| %>
+          <%= user.email %>
+        <% end %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @entry.description %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @entry.description %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @entry.status %>
-</p>
+      <p>
+        <strong>Status:</strong>
+        <% if @entry.status == "Completed" %>
+          <span class="has-background-success has-text-weight-bold"><%= @entry.status  %></span>
+        <% elsif @entry.status == "On-hold" %>
+          <span class="has-background-warning has-text-weight-bold"><%= @entry.status  %></span>
+        <% else @entry.status == "Ongoing" %>
+          <span class="has-background-info has-text-weight-bold"><%= @entry.status  %></span>
+        <% end %>
+      </p>
 
-<p>
-  <strong>Case:</strong>
-  <%= @entry.case %>
-</p>
+      <p>
+        <strong>Case:</strong>
+        <%= @entry.case %>
+      </p>
 
-<p>
-  <strong>Team:</strong>
-  <%= @entry.team %>
-</p>
+      <p>
+        <strong>Team:</strong>
+        <%= @entry.team %>
+      </p>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+      <%= link_to 'Edit', edit_entry_path(@entry), class: "button is-link is-outlined" %>
+      <%= link_to 'Back', entries_path, class: "button is-outlined is-black"%>
+    </div>
+  </div>
+</div>
