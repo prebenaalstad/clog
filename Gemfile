@@ -58,3 +58,4 @@ gem 'bulma-rails'
 gem 'font_awesome5_rails'
 gem 'devise'
 gem "font-awesome-rails"
+gem 'will_paginate', '~> 3.1.0'

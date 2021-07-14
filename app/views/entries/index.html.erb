@@ -1,8 +1,20 @@
+<!-- Will use this variable multiple times both before and after the table. -->
+<% @entries = Entry.paginate(page: params[:page]) %>
 
-<h1 class="ml-6 mt-6 title is-2">Entries</h1>
 
-<%= link_to 'New Entry', new_entry_path, class: "button ml-6 is-success is-outlined"%>
+<h1 class="mt-6 title is-1 is-flex is-justify-content-center">Entries</h1>
 
+<div class="is-flex is-justify-content-center">
+  <%= link_to 'New Entry', new_entry_path, class: "button is-success is-large"%>
+</div>
+
+
+
+<div class="is-flex is-justify-content-center mt-3">
+  <div>
+    <%= will_paginate @entries %>
+  </div>
+</div>
 
 <table class="table ml-6 mr-6 is-striped">
   <thead>
@@ -18,8 +30,9 @@
   </thead>
 
   <tbody>
+
     <% @entries.each do |entry| %>
-      <tr class="mb-2">
+      <tr>
         <td><%= entry.id %></td>
         <td>
           <% User.where(id: entry.user_id).each do |user| %>
@@ -54,20 +67,23 @@
                 :title => "Delete this entry" do %>
               <%= fa_icon('trash-alt', style: 'color: Purple') %>
             <% end %>
-
-            </td>
+        </td>
 
       </tr>
-
     <% end %>
   </tbody>
-  <tfoot>
-
-  </tfoot>
-
 </table>
-<br>
-<%= link_to 'New Entry', new_entry_path, class: "button ml-6 mb-6 is-success is-outlined"%>
+
+<div class="is-flex is-justify-content-center">
+  <div>
+    <%= will_paginate @entries %>
+  </div>
+</div>
+
+<div class="is-flex is-justify-content-center mt-6">
+  <%= link_to 'New Entry', new_entry_path, class: "button mb-6 is-success"%>
+</div>
+
 <br>
 <br>
 <br>
