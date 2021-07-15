@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teams
   get 'users/get_by_user_id'
   get '/search', to: 'entries#search'
   devise_for :users

@@ -22,6 +22,7 @@
       <th>#</th>
       <th>User</th>
       <th>Description</th>
+      <th>Created at</th>
       <th>Status</th>
       <th>Case</th>
       <th>Team</th>
@@ -34,12 +35,24 @@
     <% @entries.each do |entry| %>
       <tr>
         <td><%= entry.id %></td>
-        <td>
+
+        <td style="white-space: nowrap">
           <% User.where(id: entry.user_id).each do |user| %>
             <%= user.email %>
             <% end %>
         </td>
+
         <td><%= entry.description %></td>
+
+        <td>
+          <p  style="white-space: nowrap">
+            <%= entry.created_at.strftime('%e.%m.%y - %H:%M') %>
+          </p>
+          <p  style="white-space: nowrap">
+           <%= time_ago_in_words(entry.created_at) %> ago
+          </p>
+        </td>
+
         <td>
           <% if entry.status == "Completed" %>
             <span class="has-background-success has-text-weight-bold"><%= entry.status  %></span>

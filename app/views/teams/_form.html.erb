@@ -1,0 +1,32 @@
+
+<%= form_with(model: team) do |form| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+        <% team.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <br>
+  <h4>Add members: </h4>
+  <% @users = User.all %>
+  <% @users.each do |user| %>
+    <label class="checkbox">
+      <input type="checkbox" id="user<%= user.id %>" name="user.id" value="<%= user.id %>">
+        <%= user.email %>
+    </label>
+
+  <% end %>
+  <div class="actions">
+    <%= form.submit class: "mt-4 button is-primary"%>
+  </div>
+<% end %>
