@@ -7,7 +7,10 @@
   <div class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        <%= link_to "Home", root_path, class: "navbar-item" %>
+        <%= link_to "Entries", root_path, class: "navbar-item has-text-white" %>
+      </a>
+      <a class="navbar-item">
+        <%= link_to "Incidents", incidents_path, class: "navbar-item" %>
       </a>
 
     </div>
@@ -18,7 +21,7 @@
         <%= form_tag(search_path, :method => "get") do %>
           <div class="field input-group">
             <div class="form-control">
-            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "input" %>
+            <%= search_field_tag :search, params[:search], placeholder: "Search entries", class: "input" %>
             </div>
             <div class="input-group-btn">
               <% link_to search_path(:search) do %>

@@ -21,8 +21,8 @@
     <tr>
       <th>#</th>
       <th>User</th>
-      <th>Description</th>
       <th>Created at</th>
+      <th>Description</th>
       <th>Status</th>
       <th>Case</th>
       <th>Team</th>
@@ -42,16 +42,16 @@
             <% end %>
         </td>
 
-        <td><%= entry.description %></td>
-
         <td>
           <p  style="white-space: nowrap">
             <%= entry.created_at.strftime('%e.%m.%y - %H:%M') %>
           </p>
           <p  style="white-space: nowrap">
-           <%= time_ago_in_words(entry.created_at) %> ago
+            <%= time_ago_in_words(entry.created_at) %> ago
           </p>
         </td>
+
+        <td><%= entry.description %></td>
 
         <td>
           <% if entry.status == "Completed" %>

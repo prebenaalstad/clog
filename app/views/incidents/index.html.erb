@@ -1,0 +1,85 @@
+<!-- Will use this variable multiple times both before and after the table. -->
+<% @incidents = Incident.paginate(page: params[:page]) %>
+
+
+<h1 class="mt-6 title is-1 is-flex is-justify-content-center">Incidents</h1>
+
+<div class="is-flex is-justify-content-center">
+  <%= link_to 'New Incident', new_incident_path, class: "button is-success is-large"%>
+</div>
+
+<div class="is-flex is-justify-content-center mt-3">
+  <div>
+    <%= will_paginate @incidents %>
+  </div>
+</div>
+
+<table class="table ml-6 mr-6 is-striped">
+  <thead>
+    <tr>
+      <th><strong>#</strong></th>
+      <th>User</th>
+      <th>Created at</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>System</th>
+      <th>Main case</th>
+      <th>Environment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidents.each do |incident| %>
+      <tr>
+        <td><%= incident.id %></td>
+
+        <td style="white-space: nowrap">
+          <% User.where(id: incident.user_id).each do |user| %>
+            <%= user.email %>
+          <% end %>
+        </td>
+        <td>
+          <p  style="white-space: nowrap">
+            <%= incident.created_at.strftime('%e.%m.%y - %H:%M') %>
+          </p>
+          <p  style="white-space: nowrap">
+            <%= time_ago_in_words(incident.created_at) %> ago
+          </p>
+        </td>
+
+        <td><%= incident.description %></td>
+        <td><%= incident.status %></td>
+        <td><%= incident.system %></td>
+        <td><%= incident.main_case %></td>
+        <td><%= incident.environment %></td>
+        <td><%= link_to incident_path(incident), :title => "View this incident" do %>
+            <%= fa_icon('eye', type: :solid, style: 'color: Purple') %>
+          <% end  %>
+        </td>
+
+        <td><%= link_to edit_incident_path(incident), :title => "Edit this incident" do %>
+            <%= fa_icon('edit', style: 'color: Purple') %>
+          <% end %>
+        </td>
+
+        <td><%= link_to incident_path(incident), method: :delete, data: { confirm: 'Are you sure?' },
+                        :title => "Delete this incident" do %>
+            <%= fa_icon('trash-alt', style: 'color: Purple') %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="is-flex is-justify-content-center">
+  <div>
+    <%= will_paginate @entries %>
+  </div>
+</div>
+
+<br>
+<div class="is-flex is-justify-content-center mt-6">
+  <%= link_to 'New Incident', new_incident_path, class: "button mb-6 is-success"%>
+</div>

@@ -1,0 +1,61 @@
+
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <%= form_with(model: @incident) do |form| %>
+        <% if @incident.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@incident.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+            <ul>
+              <% @incident.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.number_field :user_id, id: :entry_user_id, class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
+
+
+
+        <div class="field">
+          <%= form.label :status %>
+          <%= form.select :status, options_for_select(["Completed", "Ongoing"]) %>
+        </div>
+
+        <div class="field">
+          <%= form.label :system %>
+          <%= form.text_field :system, placeholder: "examples: ATOM, NISSY, PRO..." %>
+        </div>
+
+        <div class="field">
+          <%= form.label :main_case %>
+          <%= form.number_field :main_case %>
+        </div>
+
+        <div class="field">
+          <%= form.label :environment %>
+          <%= form.text_field :environment, placeholder: "e.g. TEST, QA or DRIFT" %>
+        </div>
+
+
+        <div class="field">
+          <%= form.label :description %>
+          <br>
+          <%= form.text_area :description, :cols => 60, :rows => 10 %>
+        </div>
+
+        <br>
+
+        <div class="actions">
+          <%= form.submit class: "button is-outlined is-primary" %>
+          <%= link_to 'Back', entries_path, class: "button is-outlined is-info mt-2" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

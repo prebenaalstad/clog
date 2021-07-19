@@ -8,6 +8,7 @@
         <% team.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
+        <li><%= team.errors.details[:users] %></li>
       </ul>
     </div>
   <% end %>
@@ -18,15 +19,18 @@
   </div>
   <br>
   <h4>Add members: </h4>
-  <% @users = User.all %>
-  <% @users.each do |user| %>
-    <label class="checkbox">
-      <input type="checkbox" id="user<%= user.id %>" name="user.id" value="<%= user.id %>">
-        <%= user.email %>
-    </label>
 
-  <% end %>
+    <% @users = User.all %>
+    <% @users.each do |user| %>
+      <label class="checkbox">
+        <input type="checkbox">
+          <%= user.email %>
+          <%= form.number_field :user_ids, id: :team_user_id, value: user.id, type: :hidden%>
+      </label>
+    <% end %>
+
   <div class="actions">
     <%= form.submit class: "mt-4 button is-primary"%>
   </div>
+
 <% end %>

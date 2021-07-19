@@ -1,0 +1,41 @@
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+
+      <p>
+        <strong>User:</strong>
+        <% User.where(id: @incident.user_id).each do |user| %>
+          <%= user.email %>
+        <% end %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @incident.description %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= @incident.status %>
+      </p>
+
+      <p>
+        <strong>System:</strong>
+        <%= @incident.system %>
+      </p>
+
+      <p>
+        <strong>Main case:</strong>
+        <%= @incident.main_case %>
+      </p>
+
+      <p>
+        <strong>Environment:</strong>
+        <%= @incident.environment %>
+      </p>
+
+      <%= link_to 'Edit', edit_incident_path(@incident), class: "button is-link is-outlined" %>
+      <%= link_to 'Back', incidents_path, class: "button is-outlined is-black"%>
+    </div>
+  </div>
+</div>
