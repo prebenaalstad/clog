@@ -1,0 +1,29 @@
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <p>
+        <strong>Name:</strong>
+        <%= @license.name %>
+      </p>
+
+      <p>
+        <strong>Notify:</strong>
+        <%= @license.notify %>
+      </p>
+
+      <p>
+        <strong>Expiration:</strong>
+        <%= @license.expiration %>
+      </p>
+      <p>
+        <strong>License key</strong>
+        <br>
+        <%= @license.license_key %>
+      </p>
+
+      <%= link_to 'Edit', edit_license_path(@license) , class: "button is-info is-outlined"%>
+      <%= link_to 'Back', licenses_path, class: "button is-outlined is-black" %>
+
+    </div>
+  </div>
+</div>

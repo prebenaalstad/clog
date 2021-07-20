@@ -1,0 +1,44 @@
+<div class="section">
+  <div class="container">
+    <div class="content is-medium is-narrow">
+      <%= form_with(model: license) do |form| %>
+        <% if license.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(license.errors.count, "error") %> prohibited this license from being saved:</h2>
+
+            <ul>
+              <% license.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, placeholder: "Descriptive name of license" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :notify %>
+          <%= form.text_field :notify, placeholder: "Who to notify when license is expiring." %>
+        </div>
+
+        <div class="field">
+          <%= form.label :expiration %>
+          <%= form.datetime_select :expiration %>
+        </div>
+
+        <div class="field">
+          <%= form.label :license_key %>
+          <br>
+          <%= form.text_area :license_key, :cols => 60, :rows => 10 %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit  class: "button is-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

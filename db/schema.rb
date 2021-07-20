@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_095716) do
+ActiveRecord::Schema.define(version: 2021_07_19_132608) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "time_taken"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_07_19_095716) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_incidents_on_user_id"
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.string "name"
+    t.string "notify"
+    t.datetime "expiration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "license_key"
   end
 
   create_table "teams", force: :cascade do |t|

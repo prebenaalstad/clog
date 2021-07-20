@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :licenses
   resources :incidents
   resources :teams
   get 'users/get_by_user_id'

@@ -1,7 +1,7 @@
 <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
   <div class="navbar-brand ml-3 mb-3 mt-3">
       <%= link_to root_path do %>
-        <%= image_tag("clog4.png", size: "70x70", alt: "rss feed") %>
+        <%= image_tag("apollo2.png", size: "200x70", alt: "rss feed") %>
       <% end%>
   </div>
   <div class="navbar-menu">
@@ -11,6 +11,9 @@
       </a>
       <a class="navbar-item">
         <%= link_to "Incidents", incidents_path, class: "navbar-item" %>
+      </a>
+      <a class="navbar-item">
+        <%= link_to "Licenses", licenses_path, class: "navbar-item" %>
       </a>
 
     </div>
